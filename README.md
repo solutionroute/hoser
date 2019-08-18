@@ -1,13 +1,14 @@
 # hoser
 Simple user and user rights management - a Go package
 
-`hoser` impelements a Bolthold (BoltDB) backed implementation of a User
-interface and a to-be growing variety of tools.
+Package hoser impelements a Bolthold (BoltDB) store (easy to add other stores) implementation of a User
+interface and a to-be growing variety of tools. The HTTP service and any related middleware is/will be compatible 
+with the Golang standard http package and routers/muxes like Chi which follow the same signature.
 
 ## What's a "hoser"?
 
-Clearly system users are not "lusers" but a hoser is akin to that. All in fun
-and if you don't like it, take off, eh?
+It's inappropriate to consider system users as *lusers*, but it happens, and a **hoser** is akin to the same idea. It's all in fun
+and in short of a short name for this package. If you don't like it, **take off, eh**?
 
 ![Bob and Doug Mackenzie characters from SCTV show The Great White North](https://upload.wikimedia.org/wikipedia/en/2/28/Bob_and_Doug_McKenzie.jpg)
 
