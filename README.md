@@ -9,8 +9,7 @@ interface and a to-be growing variety of tools.
 Clearly system users are not "lusers" but a hoser is akin to that. All in fun
 and if you don't like it, take off, eh?
 
-![Bob and Doug Mackenzie characters from SCTV show "The Great White
-North"](https://en.wikipedia.org/wiki/Bob_and_Doug_McKenzie#/media/File:Bob_and_Doug_McKenzie.jpg)
+![Bob and Doug Mackenzie characters from SCTV show "The Great White North"](https://en.wikipedia.org/wiki/Bob_and_Doug_McKenzie#/media/File:Bob_and_Doug_McKenzie.jpg)
 
 [Wikipedia](https://en.wikipedia.org/wiki/Bob_and_Doug_McKenzie) provides some
 background; [this CBC
