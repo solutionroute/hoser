@@ -46,7 +46,7 @@ func TestUser_Permissions(t *testing.T) {
 
 	frodo, _ := s.User("frodo@example.com")
 
-	if frodo.Permissions.IsGranted("lord-of-the-rings") != false {
+	if frodo.Permissions.IsGranted("lord-of-the-rings") != true {
 		t.Errorf("Frodo isn't the ring bearer, Grant permission must have failed: %#v", frodo)
 	}
 }
