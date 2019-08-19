@@ -11,11 +11,13 @@ import (
 func populateUserDB(client *Client, t *testing.T) {
 	s := client.UserService()
 	frodo := &hoser.User{
-		FirstName: "Frodo",
-		LastName:  "Baggins",
-		Email:     "frodo@example.com",
-		Password:  "29387sdakjh34",
+		FirstName:   "Frodo",
+		LastName:    "Baggins",
+		Email:       "frodo@example.com",
+		Password:    "29387sdakjh34",
+		Permissions: hoser.Permissions{},
 	}
+	frodo.Permissions.Grant("lord-of-the-rings")
 	err := s.AddUser(frodo)
 
 	if err != nil {
@@ -24,14 +26,28 @@ func populateUserDB(client *Client, t *testing.T) {
 	for i := 1; i <= NUMINSERTS; i++ {
 		strNum := strconv.Itoa(i)
 		err := s.AddUser(&hoser.User{
-			FirstName: "Mountain" + strNum,
-			LastName:  "Dwarf" + strNum,
-			Email:     strNum + "md@example.com",
-			Password:  strNum + "fakehash",
+			FirstName:   "Mountain" + strNum,
+			LastName:    "Dwarf" + strNum,
+			Email:       strNum + "md@example.com",
+			Password:    strNum + "fakehash",
+			Permissions: hoser.Permissions{},
 		})
 		if err != nil {
 			t.Error(err)
 		}
+	}
+}
+
+func TestUser_Permissions(t *testing.T) {
+	c := MustOpenClient()
+	defer c.Close()
+	s := c.UserService()
+	populateUserDB(c, t)
+
+	frodo, _ := s.User("frodo@example.com")
+
+	if frodo.Permissions.IsGranted("lord-of-the-rings") != false {
+		t.Errorf("Frodo isn't the ring bearer, Grant permission must have failed: %#v", frodo)
 	}
 }
 

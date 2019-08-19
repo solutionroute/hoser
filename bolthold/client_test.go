@@ -2,6 +2,7 @@ package bolthold_test
 
 import (
 	"io/ioutil"
+	"os"
 	"time"
 
 	"github.com/solutionroute/hoser/bolthold"
@@ -45,6 +46,6 @@ func MustOpenClient() *Client {
 
 // Close closes the client and removes the underlying database.
 func (c *Client) Close() error {
-	// defer os.Remove(c.Path)
+	defer os.Remove(c.Path)
 	return c.Client.Close()
 }

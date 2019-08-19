@@ -6,6 +6,13 @@ import (
 	"testing"
 )
 
+func TestUser_NewUser(t *testing.T) {
+	u := NewUser()
+	if u == nil {
+		t.Error("NewUser() produced nil")
+	}
+}
+
 func TestUser_Validate(t *testing.T) {
 	tests := []struct {
 		name    string
@@ -73,5 +80,42 @@ func TestUser_Validate(t *testing.T) {
 				t.Errorf("User.Validate() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
+	}
+}
+
+func TestUser_IsGranted(t *testing.T) {
+	u := NewUser()
+	u.Permissions.Grant("is_admin")
+	isStaff := u.Permissions.IsGranted("staff")
+	if isStaff != false {
+		t.Errorf("isGranted reporting isStaff in error: %v", isStaff)
+	}
+	isAdmin := u.Permissions.IsGranted("is_admin")
+	if isAdmin != true {
+		t.Errorf("isGranted reporting isAdmin in error: %v", isAdmin)
+	}
+	u.Permissions.Ungrant("is_admin")
+	isAdmin = u.Permissions.IsGranted("is_admin")
+	if isAdmin != false {
+		t.Errorf("isGranted reporting isAdmin after deletion in error: %v", isAdmin)
+	}
+}
+
+func TestUser_Grant(t *testing.T) {
+	u := NewUser()
+	u.Permissions.Grant("is_admin")
+	isAdmin := u.Permissions.IsGranted("is_admin")
+	if isAdmin != true {
+		t.Errorf("isGranted reporting isAdmin in error: %v", isAdmin)
+	}
+}
+
+func TestUser_Ungrant(t *testing.T) {
+	u := NewUser()
+	u.Permissions.Grant("is_admin")
+	u.Permissions.Ungrant("is_admin")
+	isAdmin := u.Permissions.IsGranted("is_admin")
+	if isAdmin != false {
+		t.Errorf("isGranted reporting isAdmin in error: %v", isAdmin)
 	}
 }
