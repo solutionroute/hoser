@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/solutionroute/hoser.svg?branch=master)](https://travis-ci.org/solutionroute/hoser) [![GoDoc](https://godoc.org/github.com/solutionroute/hoser?status.svg)](https://godoc.org/github.com/solutionroute/hoser) [![Coverage Status](https://coveralls.io/repos/github/solutionroute/hoser/badge.svg?branch=master)](https://coveralls.io/github/solutionroute/hoser?branch=master) [![Go Report Card](https://goreportcard.com/badge/github.com/solutionroute/hoser)](https://goreportcard.com/report/github.com/solutionroute/hoser)
+
 # hoser
 Simple user and user rights management - a Go package
 
